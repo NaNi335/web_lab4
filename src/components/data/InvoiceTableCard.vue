@@ -7,13 +7,11 @@
     <template v-slot:top>
       <v-toolbar
         flat
+        color = '#EEEEEE'
+        outlined= "True"
+        height = 100
       >
-        <v-toolbar-title>Счета на оплату</v-toolbar-title>
-        <v-divider
-          class="mx-4"
-          inset
-          vertical
-        ></v-divider>
+        <v-toolbar-title class="font-weight-bold">Счета на оплату</v-toolbar-title>
         <v-spacer></v-spacer>
         <v-dialog
           v-model="dialog"
@@ -21,13 +19,13 @@
         >
           <template v-slot:activator="{ on, attrs }">
             <v-btn
-              color="primary"
+              color="#212121"
               dark
               class="mb-2"
               v-bind="attrs"
               v-on="on"
             >
-              Добавить счет на оплату
+              Добавить
             </v-btn>
           </template>
           <v-card>
@@ -47,7 +45,7 @@
                       :items=requests
                       item-text="id"
                       item-value="id"
-                      label="Request"
+                      label="Заявка"
                       v-model="editedItem.request"
                       :rules="rules.requireds"
                     ></v-select>
@@ -61,7 +59,7 @@
                       :items=clients
                       item-text="contact_person"
                       item-value="id"
-                      label="Client"
+                      label="Клиент"
                       v-model="editedItem.client"
                       :rules="rules.requireds"
                     ></v-select>
@@ -73,7 +71,7 @@
                   >
                     <v-text-field
                       v-model="editedItem.pay_due"
-                      label="Pay due"
+                      label="Оплата до"
                       type="date"
                     ></v-text-field>
                   </v-col>
@@ -144,10 +142,10 @@ export default {
     dialogDelete: false,
     headers: [
       { text: 'id', value: 'id' },
-      { text: 'request', value: 'request.id' },
-      { text: 'client', value: 'client.contact_person' },
-      { text: 'pay_due', value: 'pay_due' },
-      { text: 'Actions', value: 'actions', sortable: false }
+      { text: 'Заявка', value: 'request.id' },
+      { text: 'Клиент', value: 'client.contact_person' },
+      { text: 'Оплата до', value: 'pay_due' },
+      { text: 'Действия', value: 'actions', sortable: false }
     ],
     editedIndex: -1,
     editedItem: {

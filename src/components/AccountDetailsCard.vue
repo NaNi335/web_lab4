@@ -7,28 +7,21 @@
     <v-row>
       <v-text-field
         v-model="EditedItem.first_name"
-        label="First name"
-        required
-      ></v-text-field>
-    </v-row>
-    <v-row>
-      <v-text-field
-        v-model="EditedItem.last_name"
-        label="Last name"
+        label="ФИО"
         required
       ></v-text-field>
     </v-row>
     <v-row>
       <v-text-field
         v-model="EditedItem.phone_number"
-        label="Phone number"
+        label="Номер телефона"
         required
       ></v-text-field>
     </v-row>
     <v-row>
       <v-text-field
         v-model="EditedItem.role"
-        label="Role"
+        label="Роль"
         required
       ></v-text-field>
     </v-row>
@@ -40,7 +33,8 @@
       Отмена
     </v-btn>
     <v-btn
-      color="primary"
+      color="#212121"
+      dark
       class="mr-4"
       @click="ChangeAccountDetails"
     >

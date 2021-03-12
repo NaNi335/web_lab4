@@ -7,13 +7,11 @@
     <template v-slot:top>
       <v-toolbar
         flat
+        color = '#EEEEEE'
+        outlined= "True"
+        height = 100
       >
-        <v-toolbar-title>Исполнители</v-toolbar-title>
-        <v-divider
-          class="mx-4"
-          inset
-          vertical
-        ></v-divider>
+        <v-toolbar-title class="font-weight-bold">Исполнители</v-toolbar-title>
         <v-spacer></v-spacer>
         <v-dialog
           v-model="dialog"
@@ -21,13 +19,13 @@
         >
           <template v-slot:activator="{ on, attrs }">
             <v-btn
-              color="primary"
+              color="#212121"
               dark
               class="mb-2"
               v-bind="attrs"
               v-on="on"
             >
-              Создать нового исполнителя
+              Добавить
             </v-btn>
           </template>
           <v-card>
@@ -41,23 +39,22 @@
                   <v-col
                     cols="12"
                     sm="6"
-                    md="4"
+                    md="12"
                   >
                     <v-text-field
                       v-model="editedItem.full_name"
-                      label="Full name"
+                      label="ФИО"
                       :rules="[rules.required, rules.counter50]"
                     ></v-text-field>
                   </v-col>
                   <v-col
                     cols="12"
                     sm="6"
-                    md="4"
+                    md="12"
                   >
                     <v-text-field
                       v-model="editedItem.phone_number"
-                      label="Phone number"
-                      type="number"
+                      label="Номер телефона"
                       :rules="[rules.required, rules.counter12]"
                     ></v-text-field>
                   </v-col>
@@ -128,9 +125,9 @@ export default {
     dialogDelete: false,
     headers: [
       { text: 'id', value: 'id' },
-      { text: 'full_name', value: 'full_name' },
-      { text: 'phone_number', value: 'phone_number' },
-      { text: 'Actions', value: 'actions', sortable: false }
+      { text: 'ФИО', value: 'full_name' },
+      { text: 'Номер телефона', value: 'phone_number' },
+      { text: 'Действия', value: 'actions', sortable: false }
     ],
     editedIndex: -1,
     editedItem: {

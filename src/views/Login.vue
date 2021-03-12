@@ -27,7 +27,7 @@ export default {
           password: this.password
         },
         success: (response) => {
-          alert('Спасибо что Вы с нами')
+          alert('Спасибо что Вы с нами!')
           sessionStorage.setItem('auth_token', response.data.attributes.auth_token)
           this.$router.push({ name: 'home' })
         },

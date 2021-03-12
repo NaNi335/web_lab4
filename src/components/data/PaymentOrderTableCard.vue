@@ -7,13 +7,11 @@
     <template v-slot:top>
       <v-toolbar
         flat
+        color = '#EEEEEE'
+        outlined= "True"
+        height = 100
       >
-        <v-toolbar-title>Платежные поручения</v-toolbar-title>
-        <v-divider
-          class="mx-4"
-          inset
-          vertical
-        ></v-divider>
+        <v-toolbar-title class="font-weight-bold">Платежные поручения</v-toolbar-title>
         <v-spacer></v-spacer>
         <v-dialog
           v-model="dialog"
@@ -21,13 +19,13 @@
         >
           <template v-slot:activator="{ on, attrs }">
             <v-btn
-              color="primary"
+              color="#212121"
               dark
               class="mb-2"
               v-bind="attrs"
               v-on="on"
             >
-              Добавить платежное поручение
+              Добавить
             </v-btn>
           </template>
           <v-card>
@@ -41,13 +39,13 @@
                   <v-col
                     cols="12"
                     sm="6"
-                    md="4"
+                    md="6"
                   >
                     <v-select
                       :items=requests
                       item-text="id"
                       item-value="id"
-                      label="Request"
+                      label="Заявка"
                       v-model="editedItem.request"
                       :rules="rules.requireds"
                     ></v-select>
@@ -55,13 +53,13 @@
                   <v-col
                     cols="12"
                     sm="6"
-                    md="4"
+                    md="6"
                   >
                     <v-select
                       :items=clients
                       item-text="contact_person"
                       item-value="id"
-                      label="Client"
+                      label="Клиент"
                       v-model="editedItem.client"
                       :rules="rules.requireds"
                     ></v-select>
@@ -69,13 +67,13 @@
                   <v-col
                     cols="12"
                     sm="6"
-                    md="4"
+                    md="6"
                   >
                     <v-select
                       :items=invoices
                       item-text="id"
                       item-value="id"
-                      label="Invoice"
+                      label="Счет"
                       v-model="editedItem.invoice"
                       :rules="rules.requireds"
                     ></v-select>
@@ -83,15 +81,14 @@
                   <v-col
                     cols="12"
                     sm="6"
-                    md="4"
+                    md="6"
                   >
                     <v-text-field
                       v-model="editedItem.pay_date"
-                      label="Pay due"
+                      label="Оплата до"
                       type="date"
                       :rules="rules.required"
                     ></v-text-field>
-                    {{ editedItem }}
                   </v-col>
                 </v-row>
               </v-container>
@@ -162,11 +159,11 @@ export default {
     dialogDelete: false,
     headers: [
       { text: 'id', value: 'id' },
-      { text: 'request', value: 'request.id' },
-      { text: 'client', value: 'client.contact_person' },
-      { text: 'invoice', value: 'invoice.id' },
-      { text: 'pay_date', value: 'pay_date' },
-      { text: 'Actions', value: 'actions', sortable: false }
+      { text: 'Заявка', value: 'request.id' },
+      { text: 'Клиент', value: 'client.contact_person' },
+      { text: 'Счет', value: 'invoice.id' },
+      { text: 'Оплата до', value: 'pay_date' },
+      { text: 'Действия', value: 'actions', sortable: false }
     ],
     editedIndex: -1,
     editedItem: {

@@ -7,13 +7,11 @@
     <template v-slot:top>
       <v-toolbar
         flat
+        color = '#EEEEEE'
+        outlined= "True"
+        height = 100
       >
-        <v-toolbar-title>Прайс-лист на услуги</v-toolbar-title>
-        <v-divider
-          class="mx-4"
-          inset
-          vertical
-        ></v-divider>
+        <v-toolbar-title class="font-weight-bold">Прайс-лист на услуги</v-toolbar-title>
         <v-spacer></v-spacer>
         <v-dialog
           v-model="dialog"
@@ -21,13 +19,13 @@
         >
           <template v-slot:activator="{ on, attrs }">
             <v-btn
-              color="primary"
+              color="#212121"
               dark
               class="mb-2"
               v-bind="attrs"
               v-on="on"
             >
-              Добавить новую услугу
+              Добавить
             </v-btn>
           </template>
           <v-card>
@@ -41,14 +39,25 @@
                   <v-col
                     cols="12"
                     sm="6"
-                    md="4"
+                    md="12"
+                  >
+                    <v-text-field
+                      v-model="editedItem.title"
+                      label="Название услуги"
+                      :rules="[rules.required, rules.counter50]"
+                    ></v-text-field>
+                  </v-col>
+                  <v-col
+                    cols="12"
+                    sm="6"
+                    md="8"
                   >
                     <v-select
                       v-model="editedItem.service_type"
                       :items=service_types
                       item-text="name"
                       item-value="abbr"
-                      label="Service type"
+                      label="Тип услуги"
                       :rules="rules.requireds"
                     ></v-select>
                   </v-col>
@@ -58,19 +67,8 @@
                     md="4"
                   >
                     <v-text-field
-                      v-model="editedItem.title"
-                      label="Title"
-                      :rules="[rules.required, rules.counter50]"
-                    ></v-text-field>
-                  </v-col>
-                  <v-col
-                    cols="12"
-                    sm="6"
-                    md="4"
-                  >
-                    <v-text-field
                       v-model="editedItem.price"
-                      label="Price"
+                      label="Цена"
                       :rules="[rules.required, rules.counter30]"
                       type="number"
                     ></v-text-field>
@@ -150,10 +148,10 @@ export default {
     dialogDelete: false,
     headers: [
       { text: 'id', value: 'id' },
-      { text: 'service_type', value: 'service_type' },
-      { text: 'title', value: 'title' },
-      { text: 'price', value: 'price' },
-      { text: 'Actions', value: 'actions', sortable: false }
+      { text: 'Тип услуги', value: 'service_type' },
+      { text: 'Название', value: 'title' },
+      { text: 'Цена', value: 'price' },
+      { text: 'Действия', value: 'actions', sortable: false }
     ],
     editedIndex: -1,
     editedItem: {

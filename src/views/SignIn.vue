@@ -8,17 +8,17 @@
       <v-row>
         <v-col cols="3" class="mx-auto">
           <v-text-field
-            label="Введите имя пользователя"
+            label="Имя пользователя"
             v-model="signInForm.username"
           />
           <v-text-field
-            label="Введите пароль"
+            label="Пароль"
             v-model="signInForm.password"
             type="password"
           />
-          <v-btn type="submit" color="primary" dark>Войти</v-btn>
+          <v-btn type="submit" color="#212121" dark>Login</v-btn>
 
-          <p class="mt-5">Ещё нет аккаунта? <router-link to="/signup">Зарегистрироваться</router-link></p>
+          <p class="mt-5">Нет аккаунта? <router-link to="/signup">Зарегистрироваться</router-link></p>
         </v-col>
       </v-row>
     </v-form>

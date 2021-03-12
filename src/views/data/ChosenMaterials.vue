@@ -1,15 +1,15 @@
 <template>
   <v-container>
     <v-row>
-      <v-col cols="2">
-        <v-card>
-          <nav-drawer/>
-        </v-card>
-      </v-col>
-
       <v-col cols="10">
         <v-card>
           <chosen-materials-table-card/>
+        </v-card>
+      </v-col>
+
+      <v-col cols="2">
+        <v-card>
+          <nav-drawer/>
         </v-card>
       </v-col>
     </v-row>

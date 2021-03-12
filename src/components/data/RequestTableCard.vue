@@ -7,42 +7,38 @@
     <template v-slot:top>
       <v-toolbar
         flat
+        color = '#EEEEEE'
+        outlined= "True"
+        height = 100
       >
-        <v-toolbar-title>Заявки</v-toolbar-title>
-        <v-divider
-          class="mx-4"
-          inset
-          vertical
-        ></v-divider>
+        <v-toolbar-title class="font-weight-bold">Заявки</v-toolbar-title>
+        <v-spacer></v-spacer>
         <v-text-field
           v-model="filter.status"
-          label="status"
+          label="Статус"
         ></v-text-field>
+        <v-spacer></v-spacer>
         <v-text-field
           v-model="filter.from_date"
-          label="from date"
           type="date"
         ></v-text-field>
+        <v-spacer></v-spacer>
         <v-text-field
           v-model="filter.to_date"
-          label="to date"
           type="date"
         ></v-text-field>
-        <v-text-field
-          v-model="filter.legal_entity"
-          label="legal entity"
-        ></v-text-field>
+        <v-spacer></v-spacer>
         <v-btn
           icon
-          color="primary"
+          color="#673AB7"
           @click="GetFiltered">
-          <v-icon>mdi-filter</v-icon>
+          <v-icon>mdi-text-search</v-icon>
         </v-btn>
         <v-btn
           icon
-          color="primary"
+          color="#212121"
           @click="clearFilter">
-          <v-icon>mdi-filter-remove</v-icon>
+          <v-icon>mdi-delete</v-icon>
         </v-btn>
         <v-spacer></v-spacer>
         <v-dialog
@@ -51,13 +47,13 @@
         >
           <template v-slot:activator="{ on, attrs }">
             <v-btn
-              color="primary"
+              color="#212121"
               dark
               class="mb-2"
               v-bind="attrs"
               v-on="on"
             >
-              Добавить заявку
+              Добавить
             </v-btn>
           </template>
           <v-card>
@@ -77,7 +73,7 @@
                       :items=clients
                       item-text="contact_person"
                       item-value="id"
-                      label="Client"
+                      label="Клиент"
                       v-model="editedItem.client"
                       :rules="rules.requireds"
                     ></v-select>
@@ -85,10 +81,10 @@
                   <v-col
                     cols="12"
                     sm="6"
-                    md="4"
+                    md="6"
                   >
                     <v-text-field
-                      label="Request date"
+                      label="Дата заявки"
                       v-model="editedItem.request_date"
                       :rules="rules.required"
                       type="date"
@@ -101,18 +97,18 @@
                   >
                     <v-text-field
                       v-model="editedItem.workload"
-                      label="Workload"
+                      label="Часы работы"
                       :rules="[rules.required, rules.counter30]"
                     ></v-text-field>
                   </v-col>
                   <v-col
                     cols="12"
                     sm="6"
-                    md="4"
+                    md="6"
                   >
                     <v-text-field
                       v-model="editedItem.price"
-                      label="Final price"
+                      label="Итоговая цена"
                       :rules="[rules.required, rules.counter30]"
                     ></v-text-field>
                   </v-col>
@@ -123,7 +119,7 @@
                   >
                     <v-select
                       :items="status_options"
-                      label="Status"
+                      label="Статус"
                       v-model="editedItem.status"
                       :rules="rules.required"
                     ></v-select>
@@ -163,6 +159,7 @@
           </v-card>
         </v-dialog>
       </v-toolbar>
+
     </template>
     <template v-slot:item.actions="{ item }">
       <v-icon
@@ -204,12 +201,12 @@ export default {
     dialogDelete: false,
     headers: [
       { text: 'id', value: 'id' },
-      { text: 'client', value: 'client' },
-      { text: 'request_date', value: 'request_date' },
-      { text: 'workload', value: 'workload' },
-      { text: 'price', value: 'price' },
-      { text: 'status', value: 'status' },
-      { text: 'Actions', value: 'actions', sortable: false }
+      { text: 'Клиент', value: 'client' },
+      { text: 'Дата запроса', value: 'request_date' },
+      { text: 'Часы работы', value: 'workload' },
+      { text: 'Цена', value: 'price' },
+      { text: 'Статус', value: 'status' },
+      { text: 'Действия', value: 'actions', sortable: false }
     ],
     editedIndex: -1,
     editedItem: {

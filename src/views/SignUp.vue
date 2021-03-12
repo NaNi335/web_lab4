@@ -8,34 +8,29 @@
       <v-row>
         <v-col cols="3" class="mx-auto">
           <v-text-field
-            label="Введите имя"
+            label="ФИО"
             v-model="signUpForm.first_name"
             :rules="rules.required"
           />
           <v-text-field
-            label="Введите фамилию"
-            v-model="signUpForm.last_name"
+            label="Имя пользователя"
+            v-model="signUpForm.username"
             :rules="rules.required"
           />
           <v-select
             :items="roles"
-            label="Выберите роль"
+            label="Роль"
             v-model="signUpForm.role"
             :rules="rules.required"
           ></v-select>
           <v-text-field
-            label="Введите номер телефона"
+            label="Номер телефона"
             v-model="signUpForm.phone_number"
             :rules="rules.required"
           />
           <v-text-field
-            label="Введите email"
+            label="Email"
             v-model="signUpForm.email"
-            :rules="rules.required"
-          />
-          <v-text-field
-            label="Введите имя пользователя"
-            v-model="signUpForm.username"
             :rules="rules.required"
           />
           <v-text-field
@@ -44,8 +39,7 @@
             type="password"
             :rules="[rules.required, rules.counter9]"
           />
-          <a>Check your password. The password must not be too common, too similar to the username or entirely numeric.</a>
-          <v-btn type="submit" color="primary" dark>Зарегистрироваться</v-btn>
+          <v-btn type="submit" color="#212121" dark>Зарегистрироваться</v-btn>
 
           <p class="mt-5">Уже зарегистрированы? <router-link to="/signin">Войти</router-link></p>
         </v-col>
@@ -69,7 +63,7 @@ export default {
       password: ''
     },
 
-    roles: ['admin', 'manager', 'accountant'],
+    roles: ['Администратор', 'Менеджер', 'Бухгалтер'],
     rules: {
       required: value => !!value || 'Required.',
       counter9: value => value.length <= 9 || 'Min 9 characters'

@@ -2,11 +2,12 @@
  <v-app>
    <v-app-bar
      app
-     color="primary"
+     color="#673AB7"
      dark
    >
-     <div class="d-flex align-center">
-       <h1 class="headline">Рекламное агентство "Луч"</h1>
+     <v-spacer></v-spacer>
+     <div class="d-flex">
+       <h1 class="headline">"Луч"</h1>
      </div>
 
      <v-spacer></v-spacer>
@@ -16,19 +17,15 @@
      </v-btn>
      <div class="mx-2"></div>
 
-     <v-btn icon @click='goHome'>
-       <v-icon>mdi-home</v-icon>
-     </v-btn>
-     <div class="mx-2"></div>
-
      <v-btn icon>
-       <v-icon v-if='!auth' @click='login' >mdi-login-variant</v-icon>
-       <v-icon v-if='auth' @click='logout' >mdi-logout-variant</v-icon>
+       <v-icon v-if='!auth' @click='login' >mdi-login</v-icon>
+       <v-icon v-if='auth' @click='logout' >mdi-logout</v-icon>
      </v-btn>
 
    </v-app-bar>
 
-   <v-main class="d-flex align-center text-center">
+   <v-main class="d-flex text-center">
+     <div style="margin-bottom: 16px"/>
      <router-view />
    </v-main>
  </v-app>

@@ -7,13 +7,11 @@
     <template v-slot:top>
       <v-toolbar
         flat
+        color = '#EEEEEE'
+        outlined= "True"
+        height = 100
       >
-        <v-toolbar-title>Прайс-лист на материалы</v-toolbar-title>
-        <v-divider
-          class="mx-4"
-          inset
-          vertical
-        ></v-divider>
+        <v-toolbar-title class="font-weight-bold">Прайс-лист на материалы</v-toolbar-title>
         <v-spacer></v-spacer>
         <v-dialog
           v-model="dialog"
@@ -21,13 +19,13 @@
         >
           <template v-slot:activator="{ on, attrs }">
             <v-btn
-              color="primary"
+              color="#212121"
               dark
               class="mb-2"
               v-bind="attrs"
               v-on="on"
             >
-              Добавить новый материал
+              Добавить
             </v-btn>
           </template>
           <v-card>
@@ -41,11 +39,11 @@
                   <v-col
                     cols="12"
                     sm="6"
-                    md="4"
+                    md="8"
                   >
                     <v-text-field
                       v-model="editedItem.title"
-                      label="Title"
+                      label="Название материала"
                       :rules="[rules.required, rules.counter50]"
                     ></v-text-field>
                   </v-col>
@@ -55,19 +53,8 @@
                     md="4"
                   >
                     <v-text-field
-                      v-model="editedItem.description"
-                      label="Description"
-                      :rules="[rules.required, rules.counter150]"
-                    ></v-text-field>
-                  </v-col>
-                  <v-col
-                    cols="12"
-                    sm="6"
-                    md="4"
-                  >
-                    <v-text-field
                       v-model="editedItem.price"
-                      label="Price"
+                      label="Цена"
                       :rules="[rules.required, rules.counter30]"
                       type="number"
                     ></v-text-field>
@@ -140,10 +127,9 @@ export default {
     dialogDelete: false,
     headers: [
       { text: 'id', value: 'id' },
-      { text: 'title', value: 'title' },
-      { text: 'description', value: 'description' },
-      { text: 'price', value: 'price' },
-      { text: 'Actions', value: 'actions', sortable: false }
+      { text: 'Название', value: 'title' },
+      { text: 'Цена', value: 'price' },
+      { text: 'Действия', value: 'actions', sortable: false }
     ],
     editedIndex: -1,
     editedItem: {

@@ -7,13 +7,11 @@
     <template v-slot:top>
       <v-toolbar
         flat
+        color = '#EEEEEE'
+        outlined= "True"
+        height = 100
       >
-        <v-toolbar-title>Выбранные материалы</v-toolbar-title>
-        <v-divider
-          class="mx-4"
-          inset
-          vertical
-        ></v-divider>
+        <v-toolbar-title class="font-weight-bold">Выбранные материалы</v-toolbar-title>
         <v-spacer></v-spacer>
         <v-dialog
           v-model="dialog"
@@ -21,13 +19,13 @@
         >
           <template v-slot:activator="{ on, attrs }">
             <v-btn
-              color="primary"
+              color="#212121"
               dark
               class="mb-2"
               v-bind="attrs"
               v-on="on"
             >
-              Добавить выбранные материалы
+              Добавить
             </v-btn>
           </template>
           <v-card>
@@ -41,27 +39,13 @@
                   <v-col
                     cols="12"
                     sm="6"
-                    md="4"
-                  >
-                    <v-select
-                      :items=materials
-                      item-text="title"
-                      item-value="id"
-                      label="Material"
-                      v-model="editedItem.material"
-                      :rules="rules.requireds"
-                    ></v-select>
-                  </v-col>
-                  <v-col
-                    cols="12"
-                    sm="6"
-                    md="4"
+                    md="6"
                   >
                     <v-select
                       :items=requests
                       item-text="id"
                       item-value="editedItem.request"
-                      label="Request"
+                      label="Заявка"
                       v-model="editedItem.request"
                       :rules="rules.requireds"
                     ></v-select>
@@ -69,25 +53,39 @@
                   <v-col
                     cols="12"
                     sm="6"
-                    md="4"
+                    md="6"
+                  >
+                    <v-select
+                      :items=materials
+                      item-text="title"
+                      item-value="id"
+                      label="Материал"
+                      v-model="editedItem.material"
+                      :rules="rules.requireds"
+                    ></v-select>
+                  </v-col>
+                  <v-col
+                    cols="12"
+                    sm="6"
+                    md="6"
                   >
                     <v-text-field
-                      v-model="editedItem.total_cost"
-                      label="Total cost"
+                      v-model="editedItem.amount"
+                      label="Количество"
+                      :rules="rules.required"
                       type="number"
-                      :rules="[rules.required, rules.counter30]"
                     ></v-text-field>
                   </v-col>
                   <v-col
                     cols="12"
                     sm="6"
-                    md="4"
+                    md="6"
                   >
                     <v-text-field
-                      v-model="editedItem.amount"
-                      label="Amount"
-                      :rules="rules.required"
+                      v-model="editedItem.total_cost"
+                      label="Итоговая стоимость"
                       type="number"
+                      :rules="[rules.required, rules.counter30]"
                     ></v-text-field>
                   </v-col>
                 </v-row>
@@ -159,11 +157,11 @@ export default {
     dialogDelete: false,
     headers: [
       { text: 'id', value: 'id' },
-      { text: 'material', value: 'material' },
-      { text: 'request', value: 'request' },
-      { text: 'total_cost', value: 'total_cost' },
-      { text: 'amount', value: 'amount' },
-      { text: 'Actions', value: 'actions', sortable: false }
+      { text: 'Материал', value: 'material' },
+      { text: 'Заявка', value: 'request' },
+      { text: 'Итоговая стоимость', value: 'total_cost' },
+      { text: 'Количество', value: 'amount' },
+      { text: 'Действия', value: 'actions', sortable: false }
     ],
     editedIndex: -1,
     editedItem: {

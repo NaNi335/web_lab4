@@ -1,10 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-
-import About from '@/views/About.vue'
 import Signup from '@/views/SignUp.vue'
 import Signin from '@/views/SignIn.vue'
-import AccountDetails from '@/views/AccountDetails.vue'
 import Login from '@/views/Login.vue'
 import Client from '@/views/data/Client'
 import ServicePL from '@/views/data/ServicePL'
@@ -16,16 +13,11 @@ import ChosenMaterials from '@/views/data/ChosenMaterials'
 import WorkGroup from '@/views/data/WorkGroup'
 import Invoice from '@/views/data/Invoice'
 import PaymentOrder from '@/views/data/PaymentOrder'
+import AccountDetails from '@/views/AccountDetails'
 
 Vue.use(VueRouter)
 
 const routes = [
-
-  {
-    path: '/',
-    name: 'about',
-    component: About
-  },
 
   {
     path: '/signup',
@@ -37,12 +29,6 @@ const routes = [
     path: '/signin',
     name: 'signin',
     component: Signin
-  },
-
-  {
-    path: '/accountdetails',
-    name: 'accountdetails',
-    component: AccountDetails
   },
 
   {
@@ -107,7 +93,13 @@ const routes = [
     path: '/paymentorder',
     name: 'paymentorder',
     component: PaymentOrder
+  },
+  {
+    path: '/accountdetails',
+    name: 'accountdetails',
+    component: AccountDetails
   }
+
 ]
 
 const router = new VueRouter({

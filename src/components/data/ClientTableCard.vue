@@ -7,13 +7,11 @@
     <template v-slot:top>
       <v-toolbar
         flat
+        color = '#EEEEEE'
+        outlined= "True"
+        height = 100
       >
-        <v-toolbar-title>Клиенты</v-toolbar-title>
-        <v-divider
-          class="mx-4"
-          inset
-          vertical
-        ></v-divider>
+        <v-toolbar-title class="font-weight-bold">Клиенты</v-toolbar-title>
         <v-spacer></v-spacer>
         <v-dialog
           v-model="dialog"
@@ -21,13 +19,13 @@
         >
           <template v-slot:activator="{ on, attrs }">
             <v-btn
-              color="primary"
+              color="#212121"
               dark
               class="mb-2"
               v-bind="attrs"
               v-on="on"
             >
-              Создать нового клиента
+              Добавить
             </v-btn>
           </template>
           <v-card>
@@ -41,41 +39,29 @@
                   <v-col
                     cols="12"
                     sm="6"
-                    md="4"
-                  >
-                    <v-text-field
-                      v-model="editedItem.legal_entity"
-                      label="Legal entity"
-                      :rules="[rules.required, rules.counter60]"
-                    ></v-text-field>
-                  </v-col>
-                  <v-col
-                    cols="12"
-                    sm="6"
-                    md="4"
+                    md="12"
                   >
                     <v-text-field
                       v-model="editedItem.contact_person"
-                      label="Contact person"
+                      label="Контактное лицо"
                       :rules="[rules.required, rules.counter60]"
                     ></v-text-field>
                   </v-col>
                   <v-col
                     cols="12"
                     sm="6"
-                    md="4"
+                    md="12"
                   >
                     <v-text-field
                       v-model="editedItem.phone_number"
-                      label="Phone number"
+                      label="Номер телефона"
                       :rules="[rules.required, rules.counter12]"
-                      type="number"
                     ></v-text-field>
                   </v-col>
                   <v-col
                     cols="12"
                     sm="6"
-                    md="4"
+                    md="12"
                   >
                     <v-text-field
                       v-model="editedItem.email"
@@ -86,11 +72,11 @@
                   <v-col
                     cols="12"
                     sm="6"
-                    md="4"
+                    md="12"
                   >
                     <v-text-field
                       v-model="editedItem.bank_details"
-                      label="Bank details"
+                      label="Банковские реквизиты"
                       :rules="[rules.required, rules.counter30]"
                     ></v-text-field>
                   </v-col>
@@ -166,12 +152,11 @@ export default {
     dialogDelete: false,
     headers: [
       { text: 'id', value: 'id' },
-      { text: 'legal_entity', value: 'legal_entity' },
-      { text: 'contact_person', value: 'contact_person' },
-      { text: 'phone_number', value: 'phone_number' },
-      { text: 'email', value: 'email' },
-      { text: 'bank_details', value: 'bank_details' },
-      { text: 'Actions', value: 'actions', sortable: false }
+      { text: 'Контактное лицо', value: 'contact_person' },
+      { text: 'Номер телефона', value: 'phone_number' },
+      { text: 'Email', value: 'email' },
+      { text: 'Банковские реквизиты', value: 'bank_details' },
+      { text: 'Действия', value: 'actions', sortable: false }
     ],
     editedIndex: -1,
     editedItem: {
