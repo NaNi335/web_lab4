@@ -158,26 +158,24 @@ export default {
 
   methods: {
     async GetExecutors () {
-      try {
-        const response = await this.axios
-          .get('http://127.0.0.1:8000/ad_agency/executor/', { headers: { Authorization: 'Token ' + localStorage.getItem('token') } })
+      const response = await this.axios.get('http://localhost:8000/adAgency/executor/',
+        { headers: { Authorization: 'Token ' + localStorage.getItem('token'), 'Content-Type': 'application/json' } })
 
-        if (response.status !== 200) {
-          throw new Error(response.status)
-        }
-        this.executors = response.data
-        return response.data
-      } catch (e) {
-        console.error('AN API ERROR', e)
+      if (response.status !== 200) {
+        // throw new Error(response.status)
       }
+      this.executors = response.data
+      return response.data
     },
     async CreateExecutor () {
       try {
         const response = await this.axios
-          .post('http://127.0.0.1:8000/ad_agency/executor/create/', this.editedItem, { headers: { Authorization: 'Token ' + localStorage.getItem('token') } })
+          .post('http://localhost:8000/adAgency/executor/create/', this.editedItem, { headers: { Authorization: 'Token ' + localStorage.getItem('token') } })
+
+        console.log(response)
 
         if (response.status !== 201) {
-          throw new Error(response.status)
+          // throw new Error(response.status)
         }
         window.location.reload()
       } catch (e) {
@@ -188,7 +186,7 @@ export default {
       this.editedIndex = 1
       try {
         const response = await this.axios
-          .put('http://127.0.0.1:8000/ad_agency/executor/' + this.editedItem.id + '/', this.editedItem, { headers: { Authorization: 'Token ' + localStorage.getItem('token') } })
+          .put('http://localhost:8000/adAgency/executor/' + this.editedItem.id + '/', this.editedItem, { headers: { Authorization: 'Token ' + localStorage.getItem('token') } })
 
         if (response.status !== 200) {
           throw new Error(response.status)
@@ -203,7 +201,7 @@ export default {
       this.dialogDelete = true
       try {
         const response = await this.axios
-          .delete('http://127.0.0.1:8000/ad_agency/executor/' + this.editedItem.id + '/', { headers: { Authorization: 'Token ' + localStorage.getItem('token') } })
+          .delete('http://localhost:8000/adAgency/executor/' + this.editedItem.id + '/', { headers: { Authorization: 'Token ' + localStorage.getItem('token') } })
 
         if (response.status !== 204) {
           throw new Error(response.status)

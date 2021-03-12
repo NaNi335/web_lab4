@@ -135,10 +135,10 @@ export default {
   data: () => ({
     chosenservices: [],
     services: [],
-    requests: [],
+    adAgencyuests: [],
     rules: {
-      required: value => !!value || 'Required.',
-      requireds: [(value) => value.length > 0 || 'Required.'],
+      adAgencyuired: value => !!value || 'adAgencyuired.',
+      adAgencyuireds: [(value) => value.length > 0 || 'adAgencyuired.'],
       counter30: value => value.length <= 30 || 'Max 30 characters'
     },
     dialog: false,
@@ -153,12 +153,12 @@ export default {
     editedIndex: -1,
     editedItem: {
       service: 0,
-      request: 0,
+      adAgencyuest: 0,
       total_cost: 0
     },
     defaultItem: {
       service: 0,
-      request: 0,
+      adAgencyuest: 0,
       total_cost: 0
     }
   }),
@@ -178,14 +178,14 @@ export default {
   created () {
     this.GetChosenServices()
     this.GetServices()
-    this.GetRequests()
+    this.GetadAgencyuests()
   },
 
   methods: {
     async GetChosenServices () {
       try {
         const response = await this.axios
-          .get('http://127.0.0.1:8000/ad_agency/chosenservices/', { headers: { Authorization: 'Token ' + localStorage.getItem('token') } })
+          .get('http://127.0.0.1:8000/adAgency/chosenservices/', { headers: { Authorization: 'Token ' + localStorage.getItem('token') } })
 
         if (response.status !== 200) {
           throw new Error(response.status)
@@ -199,7 +199,7 @@ export default {
     async GetServices () {
       try {
         const response = await this.axios
-          .get('http://127.0.0.1:8000/ad_agency/servicespl/', { headers: { Authorization: 'Token ' + localStorage.getItem('token') } })
+          .get('http://127.0.0.1:8000/adAgency/servicespl/', { headers: { Authorization: 'Token ' + localStorage.getItem('token') } })
 
         if (response.status !== 200) {
           throw new Error(response.status)
@@ -210,15 +210,15 @@ export default {
         console.error('AN API ERROR', e)
       }
     },
-    async GetRequests () {
+    async GetadAgencyuests () {
       try {
         const response = await this.axios
-          .get('http://127.0.0.1:8000/ad_agency/request/', { headers: { Authorization: 'Token ' + localStorage.getItem('token') } })
+          .get('http://127.0.0.1:8000/adAgency/adAgencyuest/', { headers: { Authorization: 'Token ' + localStorage.getItem('token') } })
 
         if (response.status !== 200) {
           throw new Error(response.status)
         }
-        this.requests = response.data
+        this.adAgencyuests = response.data
         return response.data
       } catch (e) {
         console.error('AN API ERROR', e)
@@ -227,7 +227,7 @@ export default {
     async CreateChosenServices () {
       try {
         const response = await this.axios
-          .post('http://127.0.0.1:8000/ad_agency/chosenservices/create/', this.editedItem, { headers: { Authorization: 'Token ' + localStorage.getItem('token') } })
+          .post('http://127.0.0.1:8000/adAgency/chosenservices/create/', this.editedItem, { headers: { Authorization: 'Token ' + localStorage.getItem('token') } })
 
         if (response.status !== 201) {
           throw new Error(response.status)
@@ -241,7 +241,7 @@ export default {
       this.editedIndex = 1
       try {
         const response = await this.axios
-          .put('http://127.0.0.1:8000/ad_agency/chosenservices/' + this.editedItem.id + '/', this.editedItem, { headers: { Authorization: 'Token ' + localStorage.getItem('token') } })
+          .put('http://127.0.0.1:8000/adAgency/chosenservices/' + this.editedItem.id + '/', this.editedItem, { headers: { Authorization: 'Token ' + localStorage.getItem('token') } })
 
         if (response.status !== 200) {
           throw new Error(response.status)
@@ -256,7 +256,7 @@ export default {
       this.dialogDelete = true
       try {
         const response = await this.axios
-          .delete('http://127.0.0.1:8000/ad_agency/chosenservices/' + this.editedItem.id + '/', { headers: { Authorization: 'Token ' + localStorage.getItem('token') } })
+          .delete('http://127.0.0.1:8000/adAgency/chosenservices/' + this.editedItem.id + '/', { headers: { Authorization: 'Token ' + localStorage.getItem('token') } })
 
         if (response.status !== 204) {
           throw new Error(response.status)
@@ -269,7 +269,7 @@ export default {
     editItem (item) {
       this.editedIndex = 1
       this.editedItem = Object.assign({}, item)
-      this.editedItem.request = parseInt(this.editedItem.request.split('-')[0])
+      this.editedItem.adAgencyuest = parseInt(this.editedItem.adAgencyuest.split('-')[0])
       this.editedItem.service = this.services.find(item => item.title === this.editedItem.service).id
       this.dialog = true
     },

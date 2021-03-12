@@ -44,13 +44,14 @@ export default {
 
         console.log('SIGN IN RESPONSE', response)
 
-        // if (response.status !== 200) {
-        //   throw new Error(response.status)
-        // }
+        if (response.status !== 200) {
+          throw new Error(response.status)
+        }
 
         this.$refs.signInForm.reset()
 
         localStorage.setItem('token', response.data.auth_token)
+        document.cookie = `CSRF=${response.data.auth_token}`
 
         window.location = '/'
       } catch (e) {

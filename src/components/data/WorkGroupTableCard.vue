@@ -197,7 +197,7 @@ export default {
     async GetWorkGroup () {
       try {
         const response = await this.axios
-          .get('http://127.0.0.1:8000/ad_agency/workgroup/', { headers: { Authorization: 'Token ' + localStorage.getItem('token') } })
+          .get('http://127.0.0.1:8000/adAgency/workgroup/', { headers: { Authorization: 'Token ' + localStorage.getItem('token') } })
 
         if (response.status !== 200) {
           throw new Error(response.status)
@@ -211,7 +211,7 @@ export default {
     async GetExecutor () {
       try {
         const response = await this.axios
-          .get('http://127.0.0.1:8000/ad_agency/executor/', { headers: { Authorization: 'Token ' + localStorage.getItem('token') } })
+          .get('http://127.0.0.1:8000/adAgency/executor/', { headers: { Authorization: 'Token ' + localStorage.getItem('token') } })
 
         if (response.status !== 200) {
           throw new Error(response.status)
@@ -225,7 +225,7 @@ export default {
     async GetRequests () {
       try {
         const response = await this.axios
-          .get('http://127.0.0.1:8000/ad_agency/request/', { headers: { Authorization: 'Token ' + localStorage.getItem('token') } })
+          .get('http://127.0.0.1:8000/adAgency/request/', { headers: { Authorization: 'Token ' + localStorage.getItem('token') } })
 
         if (response.status !== 200) {
           throw new Error(response.status)
@@ -239,7 +239,7 @@ export default {
     async CreateWorkGroup () {
       try {
         const response = await this.axios
-          .post('http://127.0.0.1:8000/ad_agency/workgroup/create/', this.editedItem, { headers: { Authorization: 'Token ' + localStorage.getItem('token') } })
+          .post('http://127.0.0.1:8000/adAgency/workgroup/create/', this.editedItem, { headers: { Authorization: 'Token ' + localStorage.getItem('token') } })
 
         if (response.status !== 201) {
           throw new Error(response.status)
@@ -253,7 +253,7 @@ export default {
       this.editedIndex = 1
       try {
         const response = await this.axios
-          .put('http://127.0.0.1:8000/ad_agency/workgroup/' + this.editedItem.id + '/', this.editedItem, { headers: { Authorization: 'Token ' + localStorage.getItem('token') } })
+          .put('http://127.0.0.1:8000/adAgency/workgroup/' + this.editedItem.id + '/', this.editedItem, { headers: { Authorization: 'Token ' + localStorage.getItem('token') } })
 
         if (response.status !== 200) {
           throw new Error(response.status)
@@ -268,7 +268,7 @@ export default {
       this.dialogDelete = true
       try {
         const response = await this.axios
-          .delete('http://127.0.0.1:8000/ad_agency/workgroup/' + this.editedItem.id + '/', { headers: { Authorization: 'Token ' + localStorage.getItem('token') } })
+          .delete('http://127.0.0.1:8000/adAgency/workgroup/' + this.editedItem.id + '/', { headers: { Authorization: 'Token ' + localStorage.getItem('token') } })
 
         if (response.status !== 204) {
           throw new Error(response.status)

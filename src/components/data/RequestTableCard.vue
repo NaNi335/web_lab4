@@ -253,7 +253,7 @@ export default {
     async GetRequests () {
       try {
         const response = await this.axios
-          .get('http://127.0.0.1:8000/ad_agency/request/', { headers: { Authorization: 'Token ' + localStorage.getItem('token') } })
+          .get('http://127.0.0.1:8000/adAgency/request/', { headers: { Authorization: 'Token ' + localStorage.getItem('token') } })
 
         if (response.status !== 200) {
           throw new Error(response.status)
@@ -291,7 +291,7 @@ export default {
 
       try {
         const response = await this.axios
-          .get('http://127.0.0.1:8000/ad_agency/request/' + '?' + filterUrl, { headers: { Authorization: 'Token ' + localStorage.getItem('token') } })
+          .get('http://127.0.0.1:8000/adAgency/request/' + '?' + filterUrl, { headers: { Authorization: 'Token ' + localStorage.getItem('token') } })
 
         if (response.status !== 200) {
           throw new Error(response.status)
@@ -304,7 +304,7 @@ export default {
     async GetClients () {
       try {
         const response = await this.axios
-          .get('http://127.0.0.1:8000/ad_agency/client/', { headers: { Authorization: 'Token ' + localStorage.getItem('token') } })
+          .get('http://127.0.0.1:8000/adAgency/client/', { headers: { Authorization: 'Token ' + localStorage.getItem('token') } })
 
         if (response.status !== 200) {
           throw new Error(response.status)
@@ -319,7 +319,7 @@ export default {
       this.matchStatus()
       try {
         const response = await this.axios
-          .post('http://127.0.0.1:8000/ad_agency/request/create/', this.editedItem, { headers: { Authorization: 'Token ' + localStorage.getItem('token') } })
+          .post('http://127.0.0.1:8000/adAgency/request/create/', this.editedItem, { headers: { Authorization: 'Token ' + localStorage.getItem('token') } })
 
         if (response.status !== 201) {
           throw new Error(response.status)
@@ -334,7 +334,7 @@ export default {
       this.matchStatus()
       try {
         const response = await this.axios
-          .put('http://127.0.0.1:8000/ad_agency/request/' + this.editedItem.id + '/', this.editedItem, { headers: { Authorization: 'Token ' + localStorage.getItem('token') } })
+          .put('http://127.0.0.1:8000/adAgency/request/' + this.editedItem.id + '/', this.editedItem, { headers: { Authorization: 'Token ' + localStorage.getItem('token') } })
 
         if (response.status !== 200) {
           throw new Error(response.status)
@@ -349,7 +349,7 @@ export default {
       this.dialogDelete = true
       try {
         const response = await this.axios
-          .delete('http://127.0.0.1:8000/ad_agency/request/' + this.editedItem.id + '/', { headers: { Authorization: 'Token ' + localStorage.getItem('token') } })
+          .delete('http://127.0.0.1:8000/adAgency/request/' + this.editedItem.id + '/', { headers: { Authorization: 'Token ' + localStorage.getItem('token') } })
 
         if (response.status !== 204) {
           throw new Error(response.status)

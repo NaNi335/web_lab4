@@ -203,7 +203,7 @@ export default {
     async GetPaymentOrder () {
       try {
         const response = await this.axios
-          .get('http://127.0.0.1:8000/ad_agency/paymentorder/', { headers: { Authorization: 'Token ' + localStorage.getItem('token') } })
+          .get('http://127.0.0.1:8000/adAgency/paymentorder/', { headers: { Authorization: 'Token ' + localStorage.getItem('token') } })
 
         if (response.status !== 200) {
           throw new Error(response.status)
@@ -217,7 +217,7 @@ export default {
     async GetRequests () {
       try {
         const response = await this.axios
-          .get('http://127.0.0.1:8000/ad_agency/request/', { headers: { Authorization: 'Token ' + localStorage.getItem('token') } })
+          .get('http://127.0.0.1:8000/adAgency/request/', { headers: { Authorization: 'Token ' + localStorage.getItem('token') } })
 
         if (response.status !== 200) {
           throw new Error(response.status)
@@ -231,7 +231,7 @@ export default {
     async GetClients () {
       try {
         const response = await this.axios
-          .get('http://127.0.0.1:8000/ad_agency/client/', { headers: { Authorization: 'Token ' + localStorage.getItem('token') } })
+          .get('http://127.0.0.1:8000/adAgency/client/', { headers: { Authorization: 'Token ' + localStorage.getItem('token') } })
 
         if (response.status !== 200) {
           throw new Error(response.status)
@@ -245,7 +245,7 @@ export default {
     async GetInvoice () {
       try {
         const response = await this.axios
-          .get('http://127.0.0.1:8000/ad_agency/invoice/', { headers: { Authorization: 'Token ' + localStorage.getItem('token') } })
+          .get('http://127.0.0.1:8000/adAgency/invoice/', { headers: { Authorization: 'Token ' + localStorage.getItem('token') } })
 
         if (response.status !== 200) {
           throw new Error(response.status)
@@ -259,7 +259,7 @@ export default {
     async CreatePaymentOrder () {
       try {
         const response = await this.axios
-          .post('http://127.0.0.1:8000/ad_agency/paymentorder/create/', { request: this.editedItem.request, client: this.editedItem.client, invoice: this.editedItem.invoice, pay_date: this.editedItem.pay_date }, { headers: { Authorization: 'Token ' + localStorage.getItem('token') } })
+          .post('http://127.0.0.1:8000/adAgency/paymentorder/create/', { request: this.editedItem.request, client: this.editedItem.client, invoice: this.editedItem.invoice, pay_date: this.editedItem.pay_date }, { headers: { Authorization: 'Token ' + localStorage.getItem('token') } })
 
         if (response.status !== 201) {
           throw new Error(response.status)
@@ -273,7 +273,7 @@ export default {
       this.editedIndex = 1
       try {
         const response = await this.axios
-          .put('http://127.0.0.1:8000/ad_agency/paymentorder/' + this.editedItem.id + '/', { request: this.editedItem.request.id, client: this.editedItem.client.id, invoice: this.editedItem.invoice.id, pay_date: this.editedItem.pay_date }, { headers: { Authorization: 'Token ' + localStorage.getItem('token') } })
+          .put('http://127.0.0.1:8000/adAgency/paymentorder/' + this.editedItem.id + '/', { request: this.editedItem.request.id, client: this.editedItem.client.id, invoice: this.editedItem.invoice.id, pay_date: this.editedItem.pay_date }, { headers: { Authorization: 'Token ' + localStorage.getItem('token') } })
 
         if (response.status !== 200) {
           throw new Error(response.status)
@@ -288,7 +288,7 @@ export default {
       this.dialogDelete = true
       try {
         const response = await this.axios
-          .delete('http://127.0.0.1:8000/ad_agency/paymentorder/' + this.editedItem.id + '/', { headers: { Authorization: 'Token ' + localStorage.getItem('token') } })
+          .delete('http://127.0.0.1:8000/adAgency/paymentorder/' + this.editedItem.id + '/', { headers: { Authorization: 'Token ' + localStorage.getItem('token') } })
 
         if (response.status !== 204) {
           throw new Error(response.status)
