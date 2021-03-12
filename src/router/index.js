@@ -20,6 +20,12 @@ Vue.use(VueRouter)
 const routes = [
 
   {
+    path: '/',
+    name: 'request',
+    component: Request
+  },
+
+  {
     path: '/signup',
     name: 'signup',
     component: Signup

@@ -73,11 +73,11 @@ export default {
 
   methods: {
     async signUp () {
-      if (this.signUpForm.role === 'admin') {
+      if (this.signUpForm.role === 'Администратор') {
         this.signUpForm.role = 'ad'
-      } else if (this.signUpForm.role === 'manager') {
+      } else if (this.signUpForm.role === 'Менеджер') {
         this.signUpForm.role = 'ma'
-      } else if (this.signUpForm.role === 'accountant') {
+      } else if (this.signUpForm.role === 'Бухгалтер') {
         this.signUpForm.role = 'ac'
       }
       try {
